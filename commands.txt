@@ -3,3 +3,8 @@ source virtual/bin/activate
 pip install django
 django-admin startproject children .
 django-admin startapp homes
+python manage.py makemigrations
+python manage.py migrate
+pip install coverage
+coverage  run --omit='*/virtual/*' manage.py test
+coverage html

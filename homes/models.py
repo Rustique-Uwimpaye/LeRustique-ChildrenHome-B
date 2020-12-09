@@ -13,7 +13,7 @@ class CustomAccountManager(BaseUserManager):
         
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
-        other_fields.setdefault('is_activate', True)
+        other_fields.setdefault('is_active', True)
     
         if other_fields.get('is_staff') is not True:
             raise ValueError('Superuser must be assigned to is_staff=True.')
@@ -46,7 +46,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name']
+    REQUIRED_FIELDS = ['user_name', 'first_name', 'last_name']
     
     def __str__(self):
         return self.user_name
